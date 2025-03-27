@@ -4,7 +4,6 @@ import { useAuth } from '../../../hooks/useAuth'
 import Loader from '../../ui/Loader'
 import Field from '../../ui/Field'
 import LoginButton from '../../../util/LoginButton'
-import { login, register } from '../../../util/firebase'
 
 interface IData{
   email: string,
@@ -16,7 +15,8 @@ interface IData{
 const Auth = () => {
   const [isReg,setIsReg] = useState(false)
   const [data, setData] = useState<IData>({} as IData) 
-  const {isLoading} = useAuth()
+  const {isLoading, register,login} = useAuth()
+  
   const authHandler = async() =>{
     const {email, password} = data
     if(isReg){

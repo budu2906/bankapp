@@ -1,3 +1,5 @@
+import { Icontact } from "../components/screens/payments/contacts/types"
+
 export type TypeRootStackParamList ={
     Home: undefined
     Auth:undefined
@@ -5,5 +7,6 @@ export type TypeRootStackParamList ={
     Services:undefined
     Support:undefined
     Payments:undefined
-    More:undefined
+    More:undefined,
+    Transfers: Icontact
 }

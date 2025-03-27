@@ -26,6 +26,7 @@ export const AuthProvider:FC<{children:ReactNode}>= ({children})=>{
         setIsLoading(true)
         try {
             const {user} = await register(email, password)
+         
            const docRef= await addDoc(collection(db, 'users'),{
                 _id: user.uid,
                 displayName: 'No name'

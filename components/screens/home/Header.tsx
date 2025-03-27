@@ -1,19 +1,20 @@
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
-import {FC, useEffect} from 'react'
+import {FC, useEffect, useState} from 'react'
 import Avatar from '../../ui/Avatar'
 import { useNavigation } from '@react-navigation/native'
 import {Entypo} from '@expo/vector-icons'
-import { useProfile } from '../profile/useProfile'
 import Loader from '../../ui/Loader'
 import { db } from '../../../util/firebase'
+import { addDoc, collection } from 'firebase/firestore'
+import { useProfile } from '../profile/useProfile'
 interface IHeader{
 
 }
 
 const Header:FC = () => {
-    
+  const {isLoading, name} = useProfile()
+
     const {navigate} = useNavigation() 
-    const {name, isLoading} = useProfile()
   return isLoading? <Loader/> : (
     <View className='px-4 flex-row items-center' >
         <Avatar name={name}/>
