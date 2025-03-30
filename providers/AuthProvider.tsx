@@ -3,6 +3,7 @@ import { createContext, FC, ReactNode, useEffect, useMemo, useState } from "reac
 import { Alert } from "react-native";
 import { auth, db, login, logout, register } from "../util/firebase";
 import {addDoc, collection, doc, setDoc} from 'firebase/firestore'
+import { showToast } from "../util/toast";
 
 interface Icontext{
     user: User | null
@@ -32,7 +33,7 @@ export const AuthProvider:FC<{children:ReactNode}>= ({children})=>{
                 displayName: 'No name'
             })
             
-            console.log(docRef)
+        showToast('success', 'registered successfully')
 
         } catch (error: unknown) {
             Alert.alert('Error :', error instanceof Error?error.message : String(error))
@@ -47,7 +48,7 @@ export const AuthProvider:FC<{children:ReactNode}>= ({children})=>{
         setIsLoading(true)
         try {
             await login(email,password)
-
+            showToast('success', 'logged in successfully')
             
         } catch (error: unknown) {
             Alert.alert('Error :', error instanceof Error?error.message : String(error))
@@ -63,6 +64,7 @@ export const AuthProvider:FC<{children:ReactNode}>= ({children})=>{
         setIsLoading(true)
         try {
             await logout()
+            showToast('success', 'logged out','')
 
             
         } catch (error: unknown) {

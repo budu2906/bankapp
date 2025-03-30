@@ -8,7 +8,6 @@ import Home from '../components/screens/home/Home'
 import Payments from '../components/screens/payments/Payments'
 import Services from '../components/screens/services/Services'
 import Support from '../components/screens/support/Support'
-import More from '../components/screens/more/More'
 import Profile from '../components/screens/profile/Profile'
 import Footer from '../components/layouts/footer/Footer'
 import Transfers from '../components/screens/transfers/Transfers'
@@ -42,7 +41,6 @@ const Navigation: FC = () => {
     <Stack.Screen name='Payments' component={Payments}/>
     <Stack.Screen name='Services' component={Services}/>
     <Stack.Screen name='Support' component={Support}/>
-    <Stack.Screen name='More' component={More}/>
     <Stack.Screen name='Profile' component={Profile}/>
     <Stack.Screen name='Transfers' component={Transfers}/>
     

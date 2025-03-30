@@ -9,7 +9,7 @@ import { useAuth } from '../../../hooks/useAuth'
 import { handleTransfers } from './handleTransfers'
 import { IAccounts } from '../home/accounts/Accounts'
 
-const TransferItem:FC<{toAccount: IAccounts}> = ({toAccount}) => {
+const TransferItem:FC<{toAccount: IAccounts, setIsActive: React.Dispatch<React.SetStateAction<boolean>>}> = ({toAccount, setIsActive }) => {
    const {isLoading, account} = useAccount()
    const [isVisible,setIsVisible] = useState(false)
    const [sum,setSum] = useState('')
@@ -22,12 +22,12 @@ const TransferItem:FC<{toAccount: IAccounts}> = ({toAccount}) => {
 <Modal visible={isVisible}>
         <View>
             <TextInput value={sum} onChangeText={setSum}/>
-            <Button onPress={()=>{handleTransfers(Number(sum),accounts._id, accounts.currency, accounts.balance, toAccount._id, toAccount.currency, toAccount.balance), setIsVisible(false)}}  title='submit'/> 
+            <Button onPress={()=>{handleTransfers(Number(sum),accounts._id, accounts.currency, accounts.balance, toAccount._id, toAccount.currency, toAccount.balance), setIsVisible(false); ; setIsActive(false)}}  title='submit'/> 
         </View>
 
         </Modal>
 
-        <Pressable onPress={()=> setIsVisible(true) } key={accounts._id}>
+        <Pressable onPress={()=> {setIsVisible(true)} } key={accounts._id}>
             
             <AccountItem  account={accounts}/>
             {index+1 !== account.length && <View style={styles.lastCard}></View>}

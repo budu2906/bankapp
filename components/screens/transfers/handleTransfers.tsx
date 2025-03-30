@@ -7,14 +7,14 @@ import { TextInput } from "react-native-gesture-handler";
 export const handleTransfers = async(sum: number,fromId: string, fromCurrency: string, fromBalance: number, toId: string, toCurrency: string, toBalance: number) =>{
     
         
-    if(fromBalance<Number(sum)){
+    if(fromBalance<Number(sum) || Number(sum)<=0){
         Alert.alert('insufficient balance')
         return
     }   
-    // if(fromCurrency!==toCurrency){
-    //     Alert.alert('invalid currency')
-    //     return
-    // }
+    if(fromCurrency!==toCurrency){
+        Alert.alert('invalid currency')
+        return
+    }
     let fromData
     let toData
 

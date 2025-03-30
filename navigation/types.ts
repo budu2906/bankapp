@@ -7,6 +7,5 @@ export type TypeRootStackParamList ={
     Services:undefined
     Support:undefined
     Payments:undefined
-    More:undefined,
     Transfers: Icontact
 }

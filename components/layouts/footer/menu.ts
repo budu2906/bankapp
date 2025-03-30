@@ -18,8 +18,5 @@ export const menu: IFooterItem[] = [
         iconName: 'message1',
         title: 'Support'
     },
-    {
-        iconName: 'ellipsis1',
-        title: 'More'
-    }
+ 
 ]

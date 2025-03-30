@@ -43,9 +43,9 @@ const Transfers = () => {
     <View className='gap-5 flex-1 text-center items-center'>
         <Avatar name={displayName} size='large'/>
         <Heading text={`Transfer To ${displayName}`}/>
-        <SubHeading text={`${displayName} accounts: `}/>
+        <SubHeading text={`${displayName}'s accounts: `}/>
         {isLoading? <Loader/> : account.length>0? account.map((accounts, index)=>(
-            <Pressable onPress={()=>setCurrentAccount(accounts)} key={accounts._id+32}>
+            <Pressable onPress={()=>{setCurrentAccount(accounts); setIsActive(true)}} key={accounts._id+32}>
                 <AccountItem  account={accounts}/>
                 {index+1 !== account.length && <View style={styles.lastCard}></View>}
                
@@ -53,7 +53,7 @@ const Transfers = () => {
             </Pressable>
         )) : <Text>{displayName}'s dont have an account</Text>}
 
-<TransferItem  toAccount={currentAccount} />
+{isActive && <TransferItem setIsActive={setIsActive}  toAccount={currentAccount} />}
     </View>
   )
 }
